@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { products } from "../../Data/products";
+import "./style.css";
 
 export default function Shop() {
-  const [products, setProducts] = useState([]);
+  const [shopProducts, setShopProducts] = useState(products);
   const [minPrice, setMinPrice] = useState(50);
   const [maxPrice, setMaxPrice] = useState(60);
 
@@ -22,7 +24,7 @@ export default function Shop() {
       <div className="bg-white mt-0 py-4">
         <div className="container-fluid w-75 m-auto ">
           <div className="row gx-5 my-4">
-            <div className="col-4 p-3 border border-1 border-black rounded-4">
+            <div className="col-4 p-3 border border-1 border-black rounded-4 d-none d-md-block">
               <h5 className="fs-5">Filters</h5>
               <hr />
               <div className="d-flex justify-content-between px-4">
@@ -180,7 +182,7 @@ export default function Shop() {
                 </button>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-12 col-md-8">
               <div className="d-flex justify-content-between">
                 <h4>Casual</h4>
                 <div className="d-flex ">
@@ -197,35 +199,55 @@ export default function Shop() {
                   </span>
                 </div>
               </div>
-              <div className="row">
-                {products.map((item, i) => {
+              <div className="row my-3 gy-4">
+                {shopProducts.map((item, i) => {
                   return (
-                    <div className="col-lg-3 col-md-6">
-                      <Link to = {`/product/${item.id}`}>
-                        <div key={i} className="card border-0 rounded-3">
-                          <img
-                            src={item.image}
-                            className="card-img-top"
-                            alt="..."
-                          />
-                          <div className="card-body">
-                            <h5 className="card-title">{item.name}</h5>
-                            <div className="d-flex align-items-center">
-                              <div className="starRate">
-                                <i className="fa-solid fa-star fa-xs"></i>
-                                <i className="fa-solid fa-star fa-xs"></i>
-                                <i className="fa-solid fa-star fa-xs"></i>
-                                <i className="fa-solid fa-star fa-xs"></i>
+                    <div className="col-md-4 col-sm-6" key={i}>
+                      <div className="card border-0 rounded-3">
+                        <img
+                          src={item.image}
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">{item.name}</h5>
+                          <div className="d-flex align-items-center">
+                            <div className="starRate">
+                              {Array(Math.floor(item.rating.stars))
+                                .fill()
+                                .map((ratingItem, j) => {
+                                  return (
+                                    <i
+                                      key={j}
+                                      className="fa-solid fa-star fa-xs"
+                                    ></i>
+                                  );
+                                })}
+                              {Math.floor(item.rating.stars) ==
+                              item.rating.stars ? (
+                                <></>
+                              ) : (
                                 <i className="fa-solid fa-star-half-stroke fa-xs"></i>
-                              </div>
-                              <div className="numberRate">
-                                4.5 <span> /5 </span>
-                              </div>
+                              )}
+
+                              {Array(5 - Math.ceil(item.rating.stars))
+                                .fill()
+                                .map((emptyStar, j) => {
+                                  return (
+                                    <i
+                                      class="fa-regular fa-star fa-xs"
+                                      key={j}
+                                    ></i>
+                                  );
+                                })}
                             </div>
-                            <h5 className="mt-1">${item.price}</h5>
+                            {/* <div className="numberRate">
+                              {item.rating.stars} <span> /5 </span>
+                            </div> */}
                           </div>
+                          <h5 className="mt-1">${item.priceInCents / 100}</h5>
                         </div>
-                      </Link>
+                      </div>
                     </div>
                   );
                 })}

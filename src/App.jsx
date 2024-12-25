@@ -75,7 +75,8 @@ export default function App() {
           <Route path = "/home" element = {<Home/>}/>
           {/* <Route path = "/cart" element = {<ProtectedRoute> <Cart/> </ProtectedRoute>}/> */}
           <Route path = "/profile" element = {<ProtectedRoute> <Profile/> </ProtectedRoute>}/>
-          {/* <Route path = "/shop" element = {<Shop/>}/>
+          <Route path = "/shop" element = {<Shop/>}/>
+          {/* 
           <Route path = "/product" element = {<ProductDetails/>}/>
           <Route path = "/product/:id" element = {<ProductDetails/>}/> */}
           <Route path = "/login" element = {<Login getUserData={getUserData}/>}/>
