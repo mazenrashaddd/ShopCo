@@ -78,7 +78,7 @@ export default function App() {
           {/* <Route path = "/shop" element = {<Shop/>}/>
           <Route path = "/product" element = {<ProductDetails/>}/>
           <Route path = "/product/:id" element = {<ProductDetails/>}/> */}
-          <Route path = "/login" element = {<Login/>}/>
+          <Route path = "/login" element = {<Login getUserData={getUserData}/>}/>
           <Route path = "/register" element = {<Register/>}/>
           <Route path = "*" element = {<NotFound/>}/>
         </Routes>
