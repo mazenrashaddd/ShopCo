@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import "./style.css"
 import axios from 'axios';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Profile({userData, setUserData}) {
+export default function Profile() {
   let navigate = useNavigate();
 
   const[productData, setProductData] = useState({
