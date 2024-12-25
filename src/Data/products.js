@@ -8,6 +8,8 @@ export const products = [
     priceInCents: 1090,
     keywords: ["beige", "hoodie", "men", "casual"],
     category: "Hoodies",
+    description:
+      "A comfortable and stylish beige hoodie for men, perfect for casual wear during cooler weather.",
   },
   {
     id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
@@ -18,6 +20,8 @@ export const products = [
     priceInCents: 2095,
     keywords: ["black", "jacket", "men", "swat"],
     category: "Jackets",
+    description:
+      "A sleek black SWAT jacket designed for men, offering both utility and modern style.",
   },
   {
     id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
@@ -30,6 +34,8 @@ export const products = [
     type: "clothing",
     sizeChartLink: "https://example.com/images/clothing-size-chart.png",
     category: "T-shirts",
+    description:
+      "A soft, breathable white cotton t-shirt, the perfect addition to your casual wardrobe.",
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -40,6 +46,8 @@ export const products = [
     priceInCents: 2067,
     keywords: ["grey", "knit", "sweater", "winter"],
     category: "Sweaters",
+    description:
+      "Stay warm and cozy in this grey knit sweater, ideal for chilly winter days.",
   },
   {
     id: "8c9c52b5-5a19-4bcb-a5d1-158a74287c53",
@@ -50,6 +58,8 @@ export const products = [
     priceInCents: 3499,
     keywords: ["black", "pants", "fashion", "men"],
     category: "Jeans",
+    description:
+      "Classic black pants that blend seamlessly with any outfit, offering both comfort and style.",
   },
   {
     id: "dd82ca78-a18b-4e2a-9250-31e67412f98d",
@@ -60,6 +70,8 @@ export const products = [
     priceInCents: 2400,
     keywords: ["white", "jacket", "men", "casual"],
     category: "Jackets",
+    description:
+      "A fresh and stylish white jacket for men, perfect for both casual and semi-formal occasions.",
   },
   {
     id: "77919bbe-0e56-475b-adde-4f24dfed3a04",
@@ -70,6 +82,8 @@ export const products = [
     priceInCents: 3599,
     keywords: ["polo", "shirt", "men", "casual"],
     category: "Shirts",
+    description:
+      "A classic polo shirt for men, offering a casual yet polished look for any occasion.",
   },
   {
     id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
@@ -80,6 +94,8 @@ export const products = [
     priceInCents: 2899,
     keywords: ["white", "pants", "sports", "men"],
     category: "Jeans",
+    description:
+      "Comfortable white sports pants designed for active men, perfect for workouts or casual wear.",
   },
   {
     id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
@@ -90,6 +106,8 @@ export const products = [
     priceInCents: 3390,
     keywords: ["white", "long sleeve", "t-shirt", "women"],
     category: "T-shirts",
+    description:
+      "A versatile long sleeve white t-shirt for women, ideal for layering or casual wear.",
   },
   {
     id: "5968897c-4d27-4872-89f6-5bcb052746d7",
@@ -102,6 +120,8 @@ export const products = [
     type: "clothing",
     sizeChartLink: "https://example.com/images/clothing-size-chart.png",
     category: "Shirts",
+    description:
+      "A chic striped blouse for women, perfect for everyday wear with a stylish flair.",
   },
   {
     id: "aad29d11-ea98-41ee-9285-b916638cac4a",
@@ -112,6 +132,8 @@ export const products = [
     priceInCents: 1560,
     keywords: ["black", "jeans", "jacket", "men"],
     category: "Jackets",
+    description:
+      "A rugged black jeans jacket for men, combining durability with modern design.",
   },
   {
     id: "04701903-bc79-49c6-bc11-1af7e3651358",
@@ -122,6 +144,8 @@ export const products = [
     priceInCents: 2499,
     keywords: ["dark blue", "jean", "jacket", "men"],
     category: "Jackets",
+    description:
+      "A stylish dark blue jean jacket for men, offering a timeless look that pairs well with any outfit.",
   },
   {
     id: "901eb2ca-386d-432e-82f0-6fb1ee7bf969",
@@ -132,24 +156,31 @@ export const products = [
     priceInCents: 4599,
     keywords: ["beige", "sweater", "winter", "men"],
     category: "Sweaters",
+    description:
+      "A soft beige sweater for men, perfect for layering during the colder months.",
   },
   {
-    id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
+    id: "82bb68d7-ebc9-4769-b268-2a9f7ab4310c",
     image:
-      "https://atlas-content-cdn.pixelsquid.com/assets_v2/205/2056046340445574362/previews/G03-200x200.jpg",
-    name: "White Hoodie",
-    rating: { stars: 4, count: 160 },
-    priceInCents: 1699,
-    keywords: ["white", "hoodie", "casual", "cozy"],
-    category: "Hoodie",
+      "https://atlas-content-cdn.pixelsquid.com/assets_v2/335/3354134369810781568/previews/G03-200x200.jpg",
+    name: "Men's Black Shirt",
+    rating: { stars: 4.5, count: 274 },
+    priceInCents: 1995,
+    keywords: ["black", "shirt", "men"],
+    category: "Shirts",
+    description:
+      "A sleek black shirt for men, offering a polished and versatile look for any occasion.",
   },
   {
-    id: "f3a1c5e4-9e77-4e7b-8269-09c06c99f7bf",
-    image: "https://atlas-content-cdn.pixelsquid.com/stock-images/men-s-polo-shirt-KaEzAYD-600.jpg",
-    name: "Classic Beige Polo Shirt",
-    rating: { stars: 4.3, count: 185 },
-    priceInCents: 2799,
-    keywords: ["grey", "polo", "shirt", "classic", "casual"],
-    category: "Shirt"
-  },  
+    id: "f9b327e3-3e13-46ab-81a1-90034e9e94b3",
+    image:
+      "https://atlas-content-cdn.pixelsquid.com/assets_v2/205/2056043834575426670/previews/G03-200x200.jpg",
+    name: "Men's Green Cargo Pants",
+    rating: { stars: 3.6, count: 210 },
+    priceInCents: 2999,
+    keywords: ["green", "cargo", "pants", "men", "casual"],
+    category: "Pants",
+    description:
+      "Durable green cargo pants for men, designed for both functionality and style, perfect for outdoor activities or casual wear.",
+  },
 ];

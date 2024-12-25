@@ -184,11 +184,11 @@ export default function Shop({ shopProducts }) {
             <div className="col-12 col-md-8">
               <div className="d-flex justify-content-between">
                 <h4>Casual</h4>
-                <div className="d-flex ">
-                  <p className="m-2">Showing 1-10 of 100 Products Sort by:</p>
+                <div className="d-flex text-center justify-content-center">
+                  <p className="m-2 subText">Showing 1-10 of 100 Products Sort by:</p>
                   <span>
                     <select
-                      class="form-select "
+                      class="form-select cSelect"
                       aria-label="Default select example"
                     >
                       <option selected>Most Popular</option>

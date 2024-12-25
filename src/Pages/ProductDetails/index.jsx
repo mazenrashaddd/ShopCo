@@ -36,7 +36,7 @@ export default function ProductDetails({ shopProducts }) {
             </div>
           </div>
         </div>
-        <div className="">
+        {/* <div className="">
           <div className="row p-3 gy-4">
             <h4 className="fw-bolder">
               All Reviews <span className="fs-6"> (451)</span>
@@ -221,7 +221,7 @@ export default function ProductDetails({ shopProducts }) {
         </div>
         <div className="">
           <NewArrivals />
-        </div>
+        </div> */}
       </div>
     </>
   );
