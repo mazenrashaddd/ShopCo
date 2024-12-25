@@ -22,6 +22,9 @@ import { products } from "./Data/products";
 export default function App() {
   let navigate = useNavigate();
   const [shopProducts, setShopProducts] = useState(products);
+  const [cartContent, setCartContent] = useState([]);
+  const [cartCounter, setCartCounter] = useState(0);
+
   function getUserData() {
     let data = {
       name: "",
@@ -65,25 +68,25 @@ export default function App() {
   return (
     <>
       {localStorage.getItem("id") == null ? <SignupDiscount /> : <></>}
-      <Navbar logOut={logOut} />
+      <Navbar logOut={logOut} cartContent = {cartContent} cartCounter = {cartCounter} />
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path = "/cart" element = {<ProtectedRoute> <Cart/> </ProtectedRoute>}/> */}
+        <Route path = "/cart" element = {<ProtectedRoute> <Cart shopProducts={shopProducts} cartContent = {cartContent} setCartContent = {setCartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter}/> </ProtectedRoute>}/>
         <Route
           path="/profile"
           element={
             <ProtectedRoute>
               {" "}
-              <Profile />{" "}
+              <Profile shopProducts={shopProducts} setShopProducts = {setShopProducts}/>{" "}
             </ProtectedRoute>
           }
         />
-        <Route path="/shop" element={<Shop shopProducts={shopProducts} />} />
+        <Route path="/shop" element={<Shop shopProducts={shopProducts} setShopProducts = {setShopProducts} />} />
 
         <Route
           path="/product/:id"
-          element={<ProductDetails shopProducts={shopProducts} />}
+          element={<ProductDetails shopProducts={shopProducts} cartContent = {cartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter} />}
         />
 
         <Route path="/login" element={<Login getUserData={getUserData} />} />

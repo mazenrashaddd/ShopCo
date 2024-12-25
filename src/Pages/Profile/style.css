@@ -121,3 +121,7 @@ textarea{
 .inventory .profileInputIcon{
     left: 2%;
 }
+
+.showProducts .trashContainer:hover{
+    background: transparent !important;
+}

@@ -3,15 +3,18 @@ import "./style.css"
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Profile() {
+export default function Profile({shopProducts, setShopProducts}) {
   let navigate = useNavigate();
 
   const[productData, setProductData] = useState({
+    id: "",
+    image: "",
     name: "",
+    rating: {stars: "", count: ""},
+    priceInCents: "",
+    keywords: [],
+    category: "",
     description: "",
-    price: "",
-    image: null,
-    stock_quantity: ""
   })
 
   const [changedUserData, setChangedUserData] = useState({
@@ -26,6 +29,13 @@ export default function Profile() {
     let data = {...productData}
     data[e.target.name] = e.target.value;
     setProductData(data)
+  }
+
+  function saveProductData(e){
+    e.preventDefault();
+    let data = [...shopProducts]
+    data.push(productData)
+    setShopProducts(data)
   }
 
   function getUpdatedUserData(e){
@@ -99,7 +109,7 @@ export default function Profile() {
                       let unselectedFour = document.querySelector(".addProductForm")
                       
                       selected.style.display = 'block';
-                      selectedTwo.style.display = 'block';
+                      selectedTwo.style.display = 'flex';
                       unselected.style.display = 'none';
                       unselectedTwo.style.display = 'none';
                       unselectedThree.style.display = 'none';
@@ -200,25 +210,25 @@ export default function Profile() {
                     </div>
                   </div>
                   
-                    <div className="showProducts row g-2 mt-2">
-                      {/* {products.map((item, i) => {
+                    <div className="row showProducts g-2 mt-2">
+                      {shopProducts.map((item, i) => {
                         return (
-                            <div key = {i} className="col-4">
-                              <Link to = {`/product/${item.id}`}>
-                                <div className="card border-0 rounded-3">
-                                    <img src={item.image ? item.image : require('../../Images/image-placeholder.png')} className="card-img-top" alt="..."/>
-                                    <div className="card-body bg-transparent">
-                                      <h5 className="card-title">{item.name}</h5>
-                                      <h5 className='mt-1'>${item.price}</h5>
-                                    </div>
+                          <div key = {i} className="col-4">
+                            <Link to = {`/product/${i}`}>
+                              <div className="card rounded-3">
+                                <img src={item.image ? item.image : require('../../Images/image-placeholder.png')} className="card-img-top" alt="..."/>
+                                <div className="card-body bg-transparent">
+                                  <h5 className="card-title">{item.name}</h5>
+                                  <h5 className='mt-1'>${(item.priceInCents) / 100}</h5>
                                 </div>
-                              </Link>
-                            </div>
+                              </div>
+                            </Link>
+                          </div>
                         )
-                      })} */}
+                      })}
                     </div>
                   <div className="addProductForm ms-4">
-                    <form>
+                    <form onSubmit={saveProductData}>
                       <p className='mb-4'>Add Product</p>
                       <label htmlFor='name' className='form-label'>Product Name</label>
                       <div className="position-relative">
@@ -233,7 +243,7 @@ export default function Profile() {
                       </div>
                       <label htmlFor='price' className='form-label'>Price</label>
                       <div className="position-relative">
-                        <input id = "price" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "number" name = "price" placeholder='Enter product price' onChange={getProductData}/>
+                        <input id = "price" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "number" name = "priceInCents" placeholder='Enter product price' onChange={getProductData}/>
                         <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
                       </div>
                       <label htmlFor='image' className='form-label'>Product Image</label>
@@ -243,7 +253,7 @@ export default function Profile() {
                       </div>
                       <label htmlFor='stock' className='form-label'>Stock Quantity</label>
                       <div className="position-relative">
-                        <input id = "stock" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "number" name = "stock_quantity" placeholder='Enter stock quantity' onChange={getProductData}/>
+                        <input id = "stock" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "number" name = "category" placeholder='Enter product category' onChange={getProductData}/>
                         <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
                       </div>
                       <button type = "submit" className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2"> Add </button>

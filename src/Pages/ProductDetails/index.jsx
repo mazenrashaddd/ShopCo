@@ -5,14 +5,14 @@ import NewArrivals from "./../Home/Components/NewArrivals/index";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function ProductDetails({ shopProducts }) {
+export default function ProductDetails({ shopProducts, cartContent, cartCounter, setCartCounter }) {
   const [itemCounter, setItemCounter] = useState(1);
   const productID = useParams();
 
   return (
     <>
       <div className="container bg-white">
-        <Product shopProducts = {shopProducts}/>
+        <Product shopProducts = {shopProducts} cartContent = {cartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter}/>
         <div className="ProductDetails m-3">
           <h3 className=" mt-3">Product Details</h3>
           <hr />
