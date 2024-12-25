@@ -42,7 +42,8 @@ export default function App() {
         }
       )
       .then((res) => {
-        data["name"] = res.data.first_name + ' ' + res.data.last_name;
+        data["first_name"] = res.data.first_name;
+        data["last_name"] = res.data.last_name;
         data["email"] = res.data.email;
         data["phone"] = res.data.phone;
         data["role"] = res.data.role;
@@ -53,6 +54,7 @@ export default function App() {
   function logOut() {
     localStorage.clear();
     navigate("/home");
+    window.location.reload(false)
   }
 
   function ProtectedRoute(props) {
