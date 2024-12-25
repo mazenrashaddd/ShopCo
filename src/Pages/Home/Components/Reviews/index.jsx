@@ -1,8 +1,10 @@
 import React, { use, useEffect, useState } from "react";
 import "./style.css";
 import { staticReviews } from "../../../../Data/reviews.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Reviews() {
+  let navigate = useNavigate();
   const [reviews, setReviews] = useState((localStorage.getItem("reviews") == null ? staticReviews : JSON.parse(localStorage.getItem("reviews"))));
   const [slider, setSlider] = useState([]);
   const [indexPosition, setIndexPosition] = useState(0);
@@ -24,15 +26,17 @@ export default function Reviews() {
   function getReviewData(e){
     let data = {...reviewData}
     data[e.target.name] = e.target.value;
-    data["name"] = JSON.parse(localStorage.getItem("user")).name;
+    data["name"] = JSON.parse(localStorage.getItem("user")).first_name + ' ' + JSON.parse(localStorage.getItem("user")).last_name;
     setReviewData(data)
   }
 
-  function addReview(){
+  function addReview(e){
+    e.preventDefault();
     let data = [...reviews]
     data.push(reviewData)
     setReviews(data)
     localStorage.setItem("reviews", JSON.stringify(data))
+    navigate("/home");
   }
 
   useEffect(() => {
@@ -69,10 +73,21 @@ export default function Reviews() {
                   {Array(Number(item.rate)).fill().map((star, j) => {
                     return(<i className="fa-solid fa-star fa-xs" key = {j}></i>)
                   })}
+                  {Math.floor(Number(item.rate)) ==
+                    Number(item.rate) ? (
+                    <></>
+                    ) : (
+                    <i className="fa-solid fa-star-half-stroke fa-xs"></i>
+                  )}
+                  {Array(5 - Math.ceil(Number(item.rate))).fill().map((emptyStar, j) => {
+                    return (
+                      <i className="fa-regular fa-star fa-xs" key={j}></i>
+                    );
+                  })}
                 </div>
                 <div>
                   <div className="d-flex">
-                    <h5 className="card-title mb-2 me-1">{item.name}</h5>
+                    <h5 className="card-title mb-2 me-1">{item.first_name + ' ' + item.last_name}</h5>
                     <i className="verifiedIcon fa-solid fa-circle-check fa-sm"></i>
                   </div>
                   <p className="card-text">
@@ -115,7 +130,7 @@ export default function Reviews() {
             </div>
             <div class="modal-footer">
               <button type = "submit" className="modalButton btn btn-light rounded-5 shadow mt-3 mb-2" onClick={addReview} data-bs-dismiss="modal"> Add </button>
-              <button type = "submit" className="modalButton btn btn-light rounded-5 shadow mt-3 mb-2"> Close </button>
+              <button type = "submit" className="modalButton btn btn-light rounded-5 shadow mt-3 mb-2" data-bs-dismiss="modal"> Close </button>
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./style.css"
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 export default function Profile({userData, setUserData}) {
+  let navigate = useNavigate();
+
   const[productData, setProductData] = useState({
     name: "",
     description: "",
@@ -13,14 +15,12 @@ export default function Profile({userData, setUserData}) {
   })
 
   const [changedUserData, setChangedUserData] = useState({
-    first_name: userData.first_name,
-    last_name: userData.last_name,
-    phone: userData.phone,
-    email: userData.email
+    first_name: JSON.parse(localStorage.getItem("user")).first_name,
+    last_name: JSON.parse(localStorage.getItem("user")).last_name,
+    phone: JSON.parse(localStorage.getItem("user")).phone,
+    email: JSON.parse(localStorage.getItem("user")).email,
+    role: JSON.parse(localStorage.getItem("user")).role
   })
-
-  const[added, setAdded] = useState(0)
-  const[products, setProducts] = useState([])
 
   function getProductData(e){
     let data = {...productData}
@@ -34,53 +34,11 @@ export default function Profile({userData, setUserData}) {
     setChangedUserData(data)
   }
 
-  function handlerSubmitUser(e){
-    e.preventDefault()
-
-    axios.put(`https://muhammadnruno.pythonanywhere.com/api/users/${localStorage.getItem("id")}`, changedUserData, {
-      headers: {
-        'Authorization': `JWT ${localStorage.getItem("accessToken")}`
-      }
-    })
-    .then(() => {
-      setUserData(changedUserData);
-    })
+  function saveUpdatedUserData(e){
+    e.preventDefault();
+    localStorage.setItem("user", JSON.stringify(changedUserData))
+    navigate("/profile")
   }
-
-  function handlerSubmitProducts(e){
-    e.preventDefault()
-
-    axios.post(`https://muhammadnruno.pythonanywhere.com/api/products/`, productData, {
-      headers: {
-        'Authorization': `JWT ${localStorage.getItem("accessToken")}`
-      }
-    })
-    .then(() => {
-      setAdded(added + 1);
-    })
-  }
-
-  useEffect(() => {
-    axios.get(`https://muhammadnruno.pythonanywhere.com/api/products/`, {
-      headers: {
-        'Authorization': `JWT ${localStorage.getItem("accessToken")}`
-      }
-    })
-    .then((res) => {
-      setProducts(res.data.results)
-    })
-  }, [])
-
-  useEffect(() => {
-    axios.get(`https://muhammadnruno.pythonanywhere.com/api/products/`, {
-      headers: {
-        'Authorization': `JWT ${localStorage.getItem("accessToken")}`
-      }
-    })
-    .then((res) => {
-      setProducts(res.data.results)
-    })
-  }, [added])
 
   return (
     <div className='profile container my-5'>
@@ -93,8 +51,8 @@ export default function Profile({userData, setUserData}) {
             </div>
           </div>
           <div>
-            <p className='m-0 ms-3 pt-4'>{userData.first_name + ' ' + userData.last_name}</p>
-            <h4 className='ms-3'>{localStorage.getItem("role") == "Staff" ? "Store Manager" : "Customer"}</h4>
+            <p className='m-0 ms-3 pt-4'>{JSON.parse(localStorage.getItem("user")).first_name + ' ' + JSON.parse(localStorage.getItem("user")).last_name}</p>
+            <h4 className='ms-3'>{JSON.parse(localStorage.getItem("user")).role == "Staff" ? "Store Manager" : "Customer"}</h4>
           </div>
         </div>
         <div className="row">
@@ -131,7 +89,7 @@ export default function Profile({userData, setUserData}) {
                       Password & Security
                     </div>
                   </li>
-                  {localStorage.getItem("role") == "Staff" ?
+                  {JSON.parse(localStorage.getItem("user")).role == "Staff" ?
                     <li className='mb-2 p-2 rounded-2' role = "button" onClick={() => {
                       let selected = document.querySelector(".inventory");
                       let selectedTwo = document.querySelector(".showProducts")
@@ -175,18 +133,18 @@ export default function Profile({userData, setUserData}) {
           <div className="col-9">
             <div>
                 <div className="editProfile ms-4">
-                  <form onSubmit={handlerSubmitUser}>
+                  <form>
                     <div className="row">
                       <div className="col-6">
                         <p className='mb-4'>Personal</p>
                         <label htmlFor='firstName' className='form-label'>First Name</label>
                         <div className="position-relative">
-                          <input id = "firstName" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" value = {userData.first_name} name = "first_name" placeholder='Enter your first name' onChange={getUpdatedUserData}/>
+                          <input id = "firstName" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" name = "first_name" placeholder={JSON.parse(localStorage.getItem("user")).first_name} onChange={getUpdatedUserData}/>
                           <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
                         </div>
                         <label htmlFor='lastName' className='form-label'>Last Name</label>
                         <div className="position-relative">
-                          <input id = "lastName" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" value = {userData.last_name} name = "last_name" placeholder='Enter your last name' onChange={getUpdatedUserData}/>
+                          <input id = "lastName" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" name = "last_name" placeholder={JSON.parse(localStorage.getItem("user")).last_name} onChange={getUpdatedUserData}/>
                           <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
                         </div>
                       </div>
@@ -194,17 +152,17 @@ export default function Profile({userData, setUserData}) {
                       <p className='mb-4'>Contact</p>
                         <label htmlFor='email' className='form-label'>Email</label>
                         <div className="position-relative">
-                          <input id = "email" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "email" value = {userData.email} name = "email" placeholder='Enter your email address' onChange={getUpdatedUserData}/>
+                          <input id = "email" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "email" name = "email" placeholder={JSON.parse(localStorage.getItem("user")).email} onChange={getUpdatedUserData}/>
                           <i className="profileInputIcon fa-solid fa-envelope fa-2xs"></i>
                         </div>
                         <label htmlFor='phone' className='form-label'>Phone Number</label>
                         <div className="position-relative">
-                          <input id = "phone" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" value = {userData.phone} name = "phone" placeholder='Enter your phone number' onChange={getUpdatedUserData}/>
+                          <input id = "phone" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" name = "phone" placeholder={JSON.parse(localStorage.getItem("user")).phone} onChange={getUpdatedUserData}/>
                           <i className="profileInputIcon fa-solid fa-phone fa-2xs"></i>
                         </div>
                       </div>
                     </div>
-                    <button type = "submit" className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2"> Save </button>
+                    <button type = "submit" className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2" onClick={saveUpdatedUserData}> Save </button>
                   </form>
                 </div>
                 <div className="passwordAndSecurity ms-4">
@@ -243,7 +201,7 @@ export default function Profile({userData, setUserData}) {
                   </div>
                   
                     <div className="showProducts row g-2 mt-2">
-                      {products.map((item, i) => {
+                      {/* {products.map((item, i) => {
                         return (
                             <div key = {i} className="col-4">
                               <Link to = {`/product/${item.id}`}>
@@ -257,10 +215,10 @@ export default function Profile({userData, setUserData}) {
                               </Link>
                             </div>
                         )
-                      })}
+                      })} */}
                     </div>
                   <div className="addProductForm ms-4">
-                    <form onSubmit={handlerSubmitProducts}>
+                    <form>
                       <p className='mb-4'>Add Product</p>
                       <label htmlFor='name' className='form-label'>Product Name</label>
                       <div className="position-relative">
