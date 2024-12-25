@@ -14,20 +14,20 @@ import Contact from "./Components/Contact";
 import Login from "./Components/Authentication/Login";
 import Register from "./Components/Authentication/Register";
 import axios from "axios";
-import jwt from 'jwt-decode'
+import jwt from "jwt-decode";
 import ProductDetails from "./Pages/ProductDetails/index";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-
+import { products } from "./Data/products";
 
 export default function App() {
   let navigate = useNavigate();
-
+  const [shopProducts, setShopProducts] = useState(products);
   function getUserData() {
     let data = {
       name: "",
       email: "",
       phone: "",
-      role: ""
+      role: "",
     };
 
     axios
@@ -54,39 +54,44 @@ export default function App() {
   function logOut() {
     localStorage.clear();
     navigate("/home");
-    window.location.reload(false)
+    window.location.reload(false);
   }
 
   function ProtectedRoute(props) {
-    if (localStorage.getItem("id") === null)
-      return navigate("/login");
-    else 
-      return props.children;
+    if (localStorage.getItem("id") === null) return navigate("/login");
+    else return props.children;
   }
 
   return (
     <>
-        {localStorage.getItem("id") == null ?
-          <SignupDiscount/>
-          :
-          <></>
-        }
-        <Navbar logOut = {logOut}/>
-        <Routes>
-          <Route path = "" element = {<Home/>}/>
-          <Route path = "/home" element = {<Home/>}/>
-          {/* <Route path = "/cart" element = {<ProtectedRoute> <Cart/> </ProtectedRoute>}/> */}
-          <Route path = "/profile" element = {<ProtectedRoute> <Profile/> </ProtectedRoute>}/>
-          <Route path = "/shop" element = {<Shop/>}/>
-          {/* 
-          <Route path = "/product" element = {<ProductDetails/>}/>
-          <Route path = "/product/:id" element = {<ProductDetails/>}/> */}
-          <Route path = "/login" element = {<Login getUserData={getUserData}/>}/>
-          <Route path = "/register" element = {<Register/>}/>
-          <Route path = "*" element = {<NotFound/>}/>
-        </Routes>
-        <Contact/>
-        <Footer/>
+      {localStorage.getItem("id") == null ? <SignupDiscount /> : <></>}
+      <Navbar logOut={logOut} />
+      <Routes>
+        <Route path="" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        {/* <Route path = "/cart" element = {<ProtectedRoute> <Cart/> </ProtectedRoute>}/> */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              {" "}
+              <Profile />{" "}
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/shop" element={<Shop shopProducts={shopProducts} />} />
+
+        <Route
+          path="/product/:id"
+          element={<ProductDetails shopProducts={shopProducts} />}
+        />
+
+        <Route path="/login" element={<Login getUserData={getUserData} />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Contact />
+      <Footer />
     </>
   );
 }
