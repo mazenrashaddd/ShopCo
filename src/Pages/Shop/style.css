@@ -1,12 +1,22 @@
-.card{
-    overflow: hidden !important;
-    height: 320px !important;
-    /* width: 200px !important; */
+.card {
+  overflow: hidden !important;
+  height: 320px !important;
+  /* width: 200px !important; */
 }
 
-.card-img-top{
-    max-height: 180px !important;
-    width: 100%;
-    object-fit: cover;
-    object-position:top !important;
+.card-img-top {
+  max-height: 180px !important;
+  width: 100%;
+  object-fit: cover;
+  object-position: top !important;
+}
+
+.cSelect {
+  font-size: small;
+}
+
+@media (max-width: 600px) {
+  .cSelect, .subText {
+    display: none;
+  }
 }
