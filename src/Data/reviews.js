@@ -1,0 +1,6 @@
+export const staticReviews = [
+    {name: "Liam K.", description: `"This t-shirt is a fusion of comfort and creativity. The fabricis soft, and the design speaks volumes about the designer'sskill. It's like wearing a piece of art that reflects my passionfor both design and fashion."`, rate: 5}, 
+    {name: "Alex K.", description: `"Finding clothes that align with my personal style used to be a challenge until I discovered SHOP.CO. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions."`, rate: 5},
+    {name: "Sarah M.", description: `"I'm blown away by the quality and style of the clothes I received from SHOP.CO. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations."`, rate: 4},
+    {name: "Ethan R.", description: `"This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt."`, rate: 5}
+]

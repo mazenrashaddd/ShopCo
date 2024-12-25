@@ -1,0 +1,42 @@
+.browseContainer{
+    background-color: var(--card);
+}
+
+.browseHeading{
+    font-size: 50px !important;
+}
+
+.casual{
+    background-image: url(../../../../Images/dress-style-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 220px;
+}
+
+.formal{
+    background-image: url(../../../../Images/dress-style-2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 220px;
+}
+
+.party{
+    background-image: url(../../../../Images/dress-style-3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 220px;
+}
+
+.gym{
+    background-image: url(../../../../Images/dress-style-4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 220px;
+}
+
+.browseContainer p{
+    color: black !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    text-align: start !important;
+}

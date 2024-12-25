@@ -1,0 +1,23 @@
+.p-shop {
+  font-size: 35px !important;
+}
+
+.roundcircle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.color_card {
+  background: var(--card);
+}
+
+.updateItemContainer {
+  width: 150px;
+  height: 30px;
+  background-color: var(--card);
+}
+
+.pspcf {
+  margin: 33px 0;
+}

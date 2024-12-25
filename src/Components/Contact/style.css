@@ -1,0 +1,53 @@
+.subscribeHeader {
+  font-size: 50px !important;
+}
+
+.subscribeContainer {
+  position: relative;
+}
+
+.subscribeIcon {
+  color: var(--placeholder);
+  position: absolute;
+  left: 6%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.subscribeInput {
+  /* width: 50%; */
+  height: 40px;
+  padding-left: 35px;
+}
+
+.subscribeInput::placeholder {
+  color: var(--placeholder);
+  font-size: 13px;
+}
+
+.subscribeIcon {
+  color: var(--placeholder);
+  position: absolute;
+  left: 6%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-control:focus {
+  border: none;
+  box-shadow: 0 0 0 0.1rem rgba(100, 100, 100, 0.1);
+  background-color: var(--back);
+}
+
+.subscribeButton {
+  width: 100% !important;
+  height: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.1s all ease-in-out;
+  border: solid 1px rgb(222, 222, 222);
+}
+
+.subscribeButton:hover {
+  background-color: rgb(213, 213, 213);
+}

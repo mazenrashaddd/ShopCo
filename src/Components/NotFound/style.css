@@ -1,0 +1,7 @@
+.notFound{
+    height: 400px !important;
+    background-image: url(../../Images/doggo-404.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

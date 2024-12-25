@@ -1,0 +1,77 @@
+.authenticationHeader{
+    font-size: 50px !important;
+}
+
+.formContainer{
+    background-color: var(--card);
+    width: 440px;
+}
+
+.form-control{
+    border: none;
+}
+
+.form-control:focus{
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgba(100, 100, 100, 0.1);
+    background-color: var(--back);
+}
+
+.inputBox{
+    font-size: 12px;
+    width: 300px;
+    height: 35px;
+    background-color: rgba(100, 100, 100, 0.1);
+    border: 1px solid black;
+    color: black;
+}
+
+.inputBox::placeholder{
+    color: var(--placeholder);
+    font-size: 12px;
+    color: black;
+}
+
+.inputIcon{
+    position: absolute;
+    top: 35%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+#date{
+    color: black !important;
+}
+
+.form-check-label, .form-check-input{
+    font-size: 12px;
+}
+
+.form-check-input:focus{
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgba(100, 100, 100, 0.1);
+}
+
+.loginLink{
+    font-size: 12px;
+}
+
+.authenticationButton{
+    width: 200px !important;
+    height: 40px !important;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    transition: 0.3s all ease-in-out;
+}
+
+.authenticationButton:hover{
+    background-color: white;
+    color: black;
+}
+
+.error{
+    font-size: 13px !important;
+}

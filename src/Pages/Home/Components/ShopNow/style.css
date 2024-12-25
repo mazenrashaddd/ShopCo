@@ -1,0 +1,80 @@
+h1{
+    font-size: 80px !important;
+    line-height: 0.8;
+}
+
+p{
+    font-size: 12px !important;
+    color: var(--placeholder) !important;
+    font-weight: 500 !important;
+}
+
+.shopNowButton{
+    width: 38% !important;
+    height: 11% !important;
+    background-color: black;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+@keyframes infiniteColorChange{
+    0%{
+        background-color: black;
+    }
+    50%{
+        background-color: rgb(143, 143, 143);
+    }
+    100%{
+        background-color: black;
+    }
+}
+
+.shopNowButton:hover{
+    animation-name: infiniteColorChange;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+.stats{
+    line-height: 0.2;
+}
+
+.header-picture{
+    background-image: url(../../../../Images/header-homepage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 470px !important;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(180deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+.header-icons-one{
+    position: absolute;
+    right: 2%;
+    top: 15%;
+    font-size: 60px;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 5s;
+    animation-delay: 2s;
+}
+
+.header-icons-two{
+    position: absolute;
+    left: 5%;
+    top: 45%;
+    font-size: 40px;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+}

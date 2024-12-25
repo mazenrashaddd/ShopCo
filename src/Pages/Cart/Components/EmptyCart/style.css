@@ -1,0 +1,23 @@
+.emptyCart svg{
+    color: var(--placeholder);
+}
+
+.shopButton{
+    border: none;
+    outline: none;
+    background-color: rgb(23, 39, 68);
+    color: white;
+    transition: 0.1s all ease-in-out;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.shopButton{
+    width: 80px !important;
+    height: 31px !important;
+}
+
+.shopButton:hover{
+    background-color: rgb(41, 60, 96);
+    color: white;
+}

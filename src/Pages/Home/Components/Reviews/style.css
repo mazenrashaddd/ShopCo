@@ -1,0 +1,51 @@
+.reviewHeading{
+    font-size: 50px !important;
+}
+
+.slideIcon:hover{
+    background-color: #e9f2ff;
+}
+
+.forBlur{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(2px);
+}
+
+.starRate i{
+    margin-right: 2px;
+    color: orange;
+}
+
+.verifiedIcon{
+    color: rgb(5, 170, 5);
+    padding-top: 10px;
+}
+
+.card-text{
+    font-size: 12px;
+    color: var(--placeholder);
+    font-weight: 500;
+}
+
+.addReviewButton, .modalButton{
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    transition: 0.1s all ease-in-out;
+    font-size: 13px;
+    font-weight: 500;
+    width: 120px !important;
+    height: 40px !important;
+}
+
+.modalButton{
+    width: 80px !important;
+    height: 32px !important;
+}
+
+.modal-title{
+    font-size: 30px !important;
+}

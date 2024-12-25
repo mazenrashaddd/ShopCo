@@ -1,0 +1,59 @@
+.cartSummary p{
+    font-size: 16px !important;
+}
+
+.promoContainer{
+    position: relative;
+}
+
+.promoBar{
+    background-color: var(--card);
+    font-size: 12px;
+    width: 230px;
+}
+
+.promoIcon{
+    color: var(--placeholder);
+    position: absolute;
+    left: 6%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.promoBar::placeholder{
+    color: var(--placeholder);
+    font-size: 11px;
+}
+
+.applyPromoButton, .checkOutButton{
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    transition: 0.1s all ease-in-out;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.applyPromoButton{
+    width: 110px !important;
+    height: 37px !important;
+}
+
+.checkOutButton{
+    width: 330px !important;
+    height: 45px !important;
+}
+
+.applyPromoButton:hover, .checkOutButton:hover{
+    background-color: rgb(23, 39, 68);
+    color: white;
+}
+
+.checkOutIcon{
+    transition: 0.1s all ease-in-out;
+}
+
+.checkOutButton:hover .checkOutIcon{
+    transform: translate(30%, 0);
+}

@@ -1,0 +1,44 @@
+.cartItemContainer{
+    max-width: 540px;
+    background-color: var(--back);
+    height: 120px !important;
+}
+
+.cartItemContainer p, span{
+    color: black !important;
+    font-size: 11px !important;
+}
+
+.cartItemContainer span{
+    color: var(--placeholder) !important;
+}
+
+.trash{
+    color: red;
+}
+
+.card-body{
+    height: 145px !important;
+}
+
+.cartItemContainer h4{
+    font-size: 18px !important;
+}
+
+.cartItemContainer img{
+    transition: 0.2s all ease-in-out;
+}
+
+.cartItemContainer img:hover{
+    transform: scale(1.1);
+}
+
+.trashContainer:hover{
+    background-color: #e9f2ff;
+}
+
+.updateItemContainer{
+    width: 90px;
+    height: 30px;
+    background-color: var(--card);
+}

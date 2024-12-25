@@ -1,0 +1,10 @@
+span{
+    font-size: 12px;
+}
+
+.x-mark{
+    position: absolute;
+    right: 5%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+}

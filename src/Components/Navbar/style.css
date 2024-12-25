@@ -1,0 +1,92 @@
+.heading{
+    font-size: 36px;
+}
+
+.nav-item{
+    margin: 0px 5px;
+    font-size: 11px;
+}
+
+.shopDropMenu{
+    transition: 0.3s all ease-in-out;
+}
+
+.shopMenu{
+    width: 450px;
+    position: absolute;
+    z-index: 100;
+    background-color: white;
+    left: -30%;
+    top: 150%;
+}
+
+.shopNavItem:hover .shopDropMenu{
+    transform: rotate(180deg);
+}
+
+.shopNavItem:hover .shopMenu{
+    display: block !important;
+}
+
+.shopMenu h2{
+    font-size: 11px;
+}
+
+.shopMenu p{
+    font-size: 10px !important;
+}
+
+.category{
+    transition: 0.1s all ease-in-out;
+}
+
+.category:hover{
+    background-color: #e9f2ff;
+}
+
+.nav-item:hover{
+    background-color: #e9f2ff;
+}
+
+.searchContainer{
+    position: relative;
+}
+
+.searchBar{
+    background-color: var(--back);
+    font-size: 12px;
+    width: 400px;
+}
+
+.searchIcon{
+    color: var(--placeholder);
+    position: absolute;
+    left: 6%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.searchBar::placeholder{
+    color: var(--placeholder);
+    font-size: 11px;
+}
+
+.form-control{
+    border: none;
+}
+
+.form-control:focus{
+    border: none;
+    box-shadow: 0 0 0 0.1rem rgba(100, 100, 100, 0.1);
+    background-color: var(--back);
+}
+
+.cartCounter{
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 10px;
+}
+
+.logout{
+    font-size: 13px;
+}

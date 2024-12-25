@@ -1,0 +1,53 @@
+.newArrivalsHeader{
+    font-size: 50px !important;
+}
+
+.card-img-top{
+    transition: 0.3s all ease-in-out;
+}
+
+.card-img-top, .card{
+    height: 77% !important;
+}
+
+.card-body{
+    background-color: var(--back);
+    text-align: start;
+}
+
+.card-img-top:hover{
+    transform: scale(1.1);
+}
+
+h5{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.starRate i{
+    margin-right: 2px;
+    color: orange;
+}
+
+.numberRate{
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+span{
+    color: var(--placeholder);
+}
+
+.viewAllButton{
+    width: 18% !important;
+    height: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.1s all ease-in-out;
+    border: solid 1px rgb(222, 222, 222);
+}
+
+.viewAllButton:hover{
+    background-color: black;
+    color: white !important;
+}

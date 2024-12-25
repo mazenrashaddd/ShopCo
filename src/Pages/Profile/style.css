@@ -1,0 +1,123 @@
+.profileHeader{
+    font-size: 25px !important;
+}
+
+.profileImageContainer{
+    width: 100px;
+    height: 100px;
+    background-image: url(../../Images/profile-placeholder.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profileImageIconContainer{
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 80%;
+    right: 5%;
+}
+
+.profile p{
+    font-size: 20px !important;
+    color: black !important;
+    font-weight: 500 !important;
+}
+
+.profile h4{
+    font-size: 12px !important;
+}
+
+.profile li{
+    font-weight: 500 !important;
+    transition: 0.1s all ease-in-out;
+}
+
+.profile li:hover{
+    background-color: #e9f2ff;
+}
+
+.editProfile p, .passwordAndSecurity p, .inventory p, .orders p{
+    color: var(--placeholder) !important;
+    font-size: 15px !important;
+}
+
+.profile label{
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.profileInputIcon{
+    position: absolute;
+    top: 52%;
+    left: 4%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+.passwordAndSecurity .profileInputIcon{
+    left: 2%;
+}
+
+.editProfile{
+    display: block;
+}
+
+.passwordAndSecurity{
+    display: none;
+}
+
+.inventory{
+    display: none;
+}
+
+.orders{
+    display: none;
+}
+
+.showProducts{
+    display: none;
+}
+
+.addProductForm{
+    display: none;
+}
+
+.profileSaveButton, .addProduct{
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    transition: 0.1s all ease-in-out;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.profileSaveButton{
+    width: 80px !important;
+    height: 32px !important;
+}
+
+.profileSaveButton:hover, .addProduct:hover{
+    background-color: rgb(23, 39, 68);
+    color: white;
+}
+
+.addProduct{
+    width: 100px !important;
+    height: 32px !important;
+}
+
+textarea{
+    height: 100px !important;
+    border: 1px solid black !important;
+}
+
+.inventory .profileInputIcon{
+    left: 2%;
+}
