@@ -7,7 +7,7 @@ export default function Reviews() {
   const [slider, setSlider] = useState([]);
   const [indexPosition, setIndexPosition] = useState(0);
   const [reviewData, setReviewData] = useState({
-    name: JSON.parse(localStorage.getItem("user")).name,
+    name: "",
     description: "",
     rate: ""
   })
@@ -24,6 +24,7 @@ export default function Reviews() {
   function getReviewData(e){
     let data = {...reviewData}
     data[e.target.name] = e.target.value;
+    data["name"] = JSON.parse(localStorage.getItem("user")).name;
     setReviewData(data)
   }
 
