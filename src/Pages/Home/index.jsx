@@ -7,7 +7,7 @@ import TopSelling from './Components/TopSelling'
 import BrowseByDressStyle from './Components/BrowseByDressStyle'
 import Reviews from './Components/Reviews'
 
-export default function Home({userData}) {
+export default function Home() {
   return (
     <>
       <ShopNow/>
@@ -15,7 +15,7 @@ export default function Home({userData}) {
       <NewArrivals/>
       <TopSelling/>
       <BrowseByDressStyle/>
-      <Reviews userData = {userData}/>
+      <Reviews/>
     </>
   )
 }

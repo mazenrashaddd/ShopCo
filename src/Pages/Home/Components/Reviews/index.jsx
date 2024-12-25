@@ -2,12 +2,12 @@ import React, { use, useEffect, useState } from "react";
 import "./style.css";
 import { staticReviews } from "../../../../Data/reviews.js";
 
-export default function Reviews({userData}) {
-  const [reviews, setReviews] = useState(staticReviews);
+export default function Reviews() {
+  const [reviews, setReviews] = useState((localStorage.getItem("reviews") == null ? staticReviews : JSON.parse(localStorage.getItem("reviews"))));
   const [slider, setSlider] = useState([]);
   const [indexPosition, setIndexPosition] = useState(0);
   const [reviewData, setReviewData] = useState({
-    name: "",
+    name: JSON.parse(localStorage.getItem("user")).name,
     description: "",
     rate: ""
   })
@@ -24,7 +24,6 @@ export default function Reviews({userData}) {
   function getReviewData(e){
     let data = {...reviewData}
     data[e.target.name] = e.target.value;
-    data["name"] = userData.name;
     setReviewData(data)
   }
 
@@ -32,6 +31,7 @@ export default function Reviews({userData}) {
     let data = [...reviews]
     data.push(reviewData)
     setReviews(data)
+    localStorage.setItem("reviews", JSON.stringify(data))
   }
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function Reviews({userData}) {
         {slider.map((item, i) => {
           return(
             <div key = {i} className="col-sm-3 pe-2 position-relative">
-              <div className="card p-3 rounded-4">
+              <div className="card reviewCard p-3 rounded-4">
                 {i == 0 || i == 3 ? <div className="forBlur position-absolute w-100 h-100 rounded-4"></div> : <></>}
                 <div className="starRate mb-2">
                   {Array(Number(item.rate)).fill().map((star, j) => {

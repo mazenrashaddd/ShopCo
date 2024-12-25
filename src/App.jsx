@@ -20,14 +20,14 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 
 export default function App() {
-  const [userData, setUserData] = useState(null);
   let navigate = useNavigate();
 
   function getUserData() {
     let data = {
       name: "",
       email: "",
-      phone: ""
+      phone: "",
+      role: ""
     };
 
     axios
@@ -45,14 +45,12 @@ export default function App() {
         data["name"] = res.data.first_name + ' ' + res.data.last_name;
         data["email"] = res.data.email;
         data["phone"] = res.data.phone;
-        localStorage.setItem("role", res.data.role);
+        data["role"] = res.data.role;
+        localStorage.setItem("user", JSON.stringify(data));
       });
-
-      setUserData(data)
   }
 
   function logOut() {
-    setUserData(null);
     localStorage.clear();
     navigate("/home");
   }
@@ -73,14 +71,14 @@ export default function App() {
         }
         <Navbar logOut = {logOut}/>
         <Routes>
-          <Route path = "" element = {<Home userData = {userData}/>}/>
-          <Route path = "/home" element = {<Home userData = {userData}/>}/>
+          <Route path = "" element = {<Home/>}/>
+          <Route path = "/home" element = {<Home/>}/>
           {/* <Route path = "/cart" element = {<ProtectedRoute> <Cart/> </ProtectedRoute>}/> */}
-          <Route path = "/profile" element = {<ProtectedRoute> <Profile userData = {userData} setUserData={setUserData}/> </ProtectedRoute>}/>
+          <Route path = "/profile" element = {<ProtectedRoute> <Profile/> </ProtectedRoute>}/>
           {/* <Route path = "/shop" element = {<Shop/>}/>
           <Route path = "/product" element = {<ProductDetails/>}/>
           <Route path = "/product/:id" element = {<ProductDetails/>}/> */}
-          <Route path = "/login" element = {<Login getUserData={getUserData}/>}/>
+          <Route path = "/login" element = {<Login/>}/>
           <Route path = "/register" element = {<Register/>}/>
           <Route path = "*" element = {<NotFound/>}/>
         </Routes>
