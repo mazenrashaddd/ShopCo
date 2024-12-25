@@ -39,12 +39,18 @@ span{
 }
 
 .viewAllButton{
-    width: 18% !important;
+    width: 100% !important;
     height: 50px;
     font-size: 13px;
     font-weight: 500;
     transition: 0.1s all ease-in-out;
     border: solid 1px rgb(222, 222, 222);
+}
+
+@media (min-width: 1000px) {
+    .viewAllButton{
+        width: 18% !important;
+    }
 }
 
 .viewAllButton:hover{

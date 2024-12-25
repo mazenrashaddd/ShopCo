@@ -13,15 +13,15 @@ export default function ShopNow() {
               <p className='mt-4'> Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style. </p>
               <Link to = "/shop"><button className='shopNowButton btn btn-primary rounded-5 mt-1 border-0 shadow'> Shop Now </button></Link>
               <div className="d-flex justify-content-between align-items-center mt-5">
-                <div className = "stats border-end pe-4">
+                <div className = "d-flex flex-column mb-5 stats border-end pe-4">
                   <h2 className='fw-bold'> 200+ </h2>
                   <p> International Brands </p>
                 </div>
-                <div className = "stats">
+                <div className = "stats d-flex flex-column mb-5 ps-4 pe-4">
                   <h2 className='fw-bold'> 2000+ </h2>
                   <p> High-Quality Products </p>
                 </div>
-                <div className = "stats border-start ps-4">
+                <div className = "stats border-start ps-4 d-flex flex-column mb-5">
                   <h2 className='fw-bold'> 30000+ </h2>
                   <p> Happy Customers </p>
                 </div>

@@ -97,7 +97,7 @@ export default function Product({ shopProducts, cartContent, cartCounter, setCar
         <div>
           <h5>${shopProducts[productID.id].priceInCents / 100}</h5>
         </div>
-        {/* <p>{shopProducts[productID.id].description}</p> */}
+        <p>{shopProducts[productID.id].description}</p>
         <hr />
         <p className="fs-6">Select Colors</p>
         <div className=" d-flex">
