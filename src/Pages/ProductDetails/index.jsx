@@ -3,28 +3,16 @@ import "./style.css";
 import Product from "../ProductDetails/Components/Product";
 import NewArrivals from "./../Home/Components/NewArrivals/index";
 import { useParams } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
-export default function ProductDetails({cartContent}) {
-  const [itemCounter, setItemCounter] = useState(1)
+export default function ProductDetails({ shopProducts }) {
+  const [itemCounter, setItemCounter] = useState(1);
   const productID = useParams();
-  const [productDetails, setProductDetails] = useState([])
-
-  useEffect(() => {
-    axios.get(`https://muhammadnruno.pythonanywhere.com/api/products/${productID.id}`, {
-      headers: {
-        'Authorization': `JWT ${localStorage.getItem("accessToken")}`
-      }
-    })
-    .then((res) => {
-      setProductDetails(res.data)
-    })
-  }, [])
 
   return (
     <>
       <div className="container bg-white">
-        <Product productDetails = {productDetails} cartContent={cartContent}/>
+        <Product shopProducts = {shopProducts}/>
         <div className="ProductDetails m-3">
           <h3 className=" mt-3">Product Details</h3>
           <hr />

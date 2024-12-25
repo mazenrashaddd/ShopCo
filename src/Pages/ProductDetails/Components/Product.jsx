@@ -1,31 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios'
+import axios from "axios";
 
-export default function Product({productDetails, cartContent}) {
-  const [itemCounter, setItemCounter] = useState(1)
-  const [cartItem, setCartItem] = useState({
-    product: {
-      id: "",
-      name: "",
-      description: "",
-      price: "",
-      image: "",
-      stock_quantity: ""
-    },
-    quantity: "",
-    total_price: ""
-  })
-
-  function addItemToCart(){
-    let data = {...cartItem};
-    data.product = productDetails;
-    data.quantity = itemCounter;
-    data.total_price = itemCounter * productDetails.price;
-    setCartItem(data);
-    cartContent.items.push(data);
-    cartContent.total_cost += data.total_price;
-  }
+export default function Product({ shopProducts }) {
+  const [itemCounter, setItemCounter] = useState(1);
+  const productID = useParams();
 
   return (
     <div className="row">
@@ -34,21 +13,33 @@ export default function Product({productDetails, cartContent}) {
           <div className="col-md-12 col-4  mt-2">
             <img
               className="w-100 rounded-4 "
-              src={productDetails.image ? productDetails.image : require("../../../Images/image-placeholder.png")}
+              src={
+                shopProducts[productID.id].image
+                  ? shopProducts[productID.id].image
+                  : require("../../../Images/image-placeholder.png")
+              }
               alt=""
             />
           </div>
           <div className="col-md-12 col-4  mt-2">
             <img
               className="w-100 rounded-4 "
-              src={productDetails.image ? productDetails.image : require("../../../Images/image-placeholder.png")}
+              src={
+                shopProducts[productID.id].image
+                  ? shopProducts[productID.id].image
+                  : require("../../../Images/image-placeholder.png")
+              }
               alt=""
             />
           </div>
           <div className="col-md-12 col-4 mt-2">
             <img
               className="w-100 rounded-4 "
-              src={productDetails.image ? productDetails.image : require("../../../Images/image-placeholder.png")}
+              src={
+                shopProducts[productID.id].image
+                  ? shopProducts[productID.id].image
+                  : require("../../../Images/image-placeholder.png")
+              }
               alt=""
             />
           </div>
@@ -57,36 +48,49 @@ export default function Product({productDetails, cartContent}) {
       <div className="col-md-5">
         <img
           className="w-100 rounded-4 mt-2"
-          src={productDetails.image ? productDetails.image : require("../../../Images/image-placeholder.png")}
+          src={
+            shopProducts[productID.id].image
+              ? shopProducts[productID.id].image
+              : require("../../../Images/image-placeholder.png")
+          }
           alt=""
         />
       </div>
       <div className="col-md-5">
         <h4 className="p-shop mt-5 fw-bolder text-black">
-          {productDetails.name}
+          {shopProducts[productID.id].name}
         </h4>
 
         <div className="starRate mb-2">
-          <i className="fa-solid me-2 fa-star fa-xs"></i>
-          <i className="fa-solid me-2 fa-star fa-xs"></i>
-          <i className="fa-solid me-2 fa-star fa-xs"></i>
-          <i className="fa-solid me-2 fa-star fa-xs"></i>
-          <i className="fa-solid fa-star-half fa-xs"></i>
-          <span className="ms-2">4.5/5</span>
+          {Array(Math.floor(shopProducts[productID.id].rating.stars))
+            .fill()
+            .map((ratingItem, j) => {
+              return <i key={j} className="fa-solid fa-star fa-xs"></i>;
+            })}
+          {Math.floor(shopProducts[productID.id].rating.stars) ==
+          shopProducts[productID.id].rating.stars ? (
+            <></>
+          ) : (
+            <i className="fa-solid fa-star-half-stroke fa-xs"></i>
+          )}
+
+          {Array(5 - Math.ceil(shopProducts[productID.id].rating.stars))
+            .fill()
+            .map((emptyStar, j) => {
+              return <i class="fa-regular fa-star fa-xs" key={j}></i>;
+            })}
         </div>
 
         <div>
-          <h5>${productDetails.price}</h5>
+          <h5>${shopProducts[productID.id].priceInCents / 100}</h5>
         </div>
-        <p>
-          {productDetails.description}
-        </p>
+        {/* <p>{shopProducts[productID.id].description}</p> */}
         <hr />
         <p className="fs-6">Select Colors</p>
         <div className=" d-flex">
-          <div className="roundcircle me-2  bg-black" role = "button"></div>
-          <div className="roundcircle me-2  bg-secondary" role = "button"></div>
-          <div className="roundcircle me-2  bg-info" role = "button"></div>
+          <div className="roundcircle me-2  bg-black" role="button"></div>
+          <div className="roundcircle me-2  bg-secondary" role="button"></div>
+          <div className="roundcircle me-2  bg-info" role="button"></div>
         </div>
         <hr />
         <div className="">
@@ -135,7 +139,7 @@ export default function Product({productDetails, cartContent}) {
               className="btn me-4 rounded-4 bg-black text-white rounded-5 px-5"
               type="button"
               value="Add to Cart"
-              onClick={addItemToCart}
+              // onClick={addItemToCart}
             />
           </div>
         </div>

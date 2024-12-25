@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { products } from "../../Data/products";
 import "./style.css";
 
-export default function Shop() {
-  const [shopProducts, setShopProducts] = useState(products);
+export default function Shop({ shopProducts }) {
   const [minPrice, setMinPrice] = useState(50);
   const [maxPrice, setMaxPrice] = useState(60);
 
@@ -203,51 +202,53 @@ export default function Shop() {
                 {shopProducts.map((item, i) => {
                   return (
                     <div className="col-md-4 col-sm-6" key={i}>
-                      <div className="card border-0 rounded-3">
-                        <img
-                          src={item.image}
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <h5 className="card-title">{item.name}</h5>
-                          <div className="d-flex align-items-center">
-                            <div className="starRate">
-                              {Array(Math.floor(item.rating.stars))
-                                .fill()
-                                .map((ratingItem, j) => {
-                                  return (
-                                    <i
-                                      key={j}
-                                      className="fa-solid fa-star fa-xs"
-                                    ></i>
-                                  );
-                                })}
-                              {Math.floor(item.rating.stars) ==
-                              item.rating.stars ? (
-                                <></>
-                              ) : (
-                                <i className="fa-solid fa-star-half-stroke fa-xs"></i>
-                              )}
+                      <Link to={`/product/${i}`}>
+                        <div className="card border-0 rounded-3">
+                          <img
+                            src={item.image}
+                            className="card-img-top"
+                            alt="..."
+                          />
+                          <div className="card-body">
+                            <h5 className="card-title">{item.name}</h5>
+                            <div className="d-flex align-items-center">
+                              <div className="starRate">
+                                {Array(Math.floor(item.rating.stars))
+                                  .fill()
+                                  .map((ratingItem, j) => {
+                                    return (
+                                      <i
+                                        key={j}
+                                        className="fa-solid fa-star fa-xs"
+                                      ></i>
+                                    );
+                                  })}
+                                {Math.floor(item.rating.stars) ==
+                                item.rating.stars ? (
+                                  <></>
+                                ) : (
+                                  <i className="fa-solid fa-star-half-stroke fa-xs"></i>
+                                )}
 
-                              {Array(5 - Math.ceil(item.rating.stars))
-                                .fill()
-                                .map((emptyStar, j) => {
-                                  return (
-                                    <i
-                                      class="fa-regular fa-star fa-xs"
-                                      key={j}
-                                    ></i>
-                                  );
-                                })}
-                            </div>
-                            {/* <div className="numberRate">
+                                {Array(5 - Math.ceil(item.rating.stars))
+                                  .fill()
+                                  .map((emptyStar, j) => {
+                                    return (
+                                      <i
+                                        class="fa-regular fa-star fa-xs"
+                                        key={j}
+                                      ></i>
+                                    );
+                                  })}
+                              </div>
+                              {/* <div className="numberRate">
                               {item.rating.stars} <span> /5 </span>
                             </div> */}
+                            </div>
+                            <h5 className="mt-1">${item.priceInCents / 100}</h5>
                           </div>
-                          <h5 className="mt-1">${item.priceInCents / 100}</h5>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                   );
                 })}
