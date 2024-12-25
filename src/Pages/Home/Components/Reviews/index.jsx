@@ -65,7 +65,7 @@ export default function Reviews({userData}) {
               <div className="card p-3 rounded-4">
                 {i == 0 || i == 3 ? <div className="forBlur position-absolute w-100 h-100 rounded-4"></div> : <></>}
                 <div className="starRate mb-2">
-                  {Array(item.rate).fill().map((star, j) => {
+                  {Array(Number(item.rate)).fill().map((star, j) => {
                     return(<i className="fa-solid fa-star fa-xs" key = {j}></i>)
                   })}
                 </div>

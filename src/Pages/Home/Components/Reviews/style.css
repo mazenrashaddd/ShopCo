@@ -23,6 +23,12 @@
     padding-top: 10px;
 }
 
+.card{
+    height: 180px !important;
+    overflow: auto !important;
+    line-break: auto !important;
+}
+
 .card-text{
     font-size: 12px;
     color: var(--placeholder);
