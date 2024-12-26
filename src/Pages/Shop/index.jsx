@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { products } from "../../Data/products";
 import "./style.css";
 
-export default function Shop({ shopProducts }) {
+export default function Shop({ shopProducts, setShopProducts }) {
   const [minPrice, setMinPrice] = useState(50);
   const [maxPrice, setMaxPrice] = useState(60);
 

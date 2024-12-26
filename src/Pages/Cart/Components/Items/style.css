@@ -21,6 +21,16 @@
     height: 145px !important;
 }
 
+.cartItemContainer{
+    height: 150px !important;
+    background: transparent;
+}
+
+.cartItemContainer .card{
+    height: 150px !important;
+    background: transparent;
+}
+
 .cartItemContainer h4{
     font-size: 18px !important;
 }
@@ -38,7 +48,7 @@
 }
 
 .updateItemContainer{
-    width: 90px;
+    width: 130px;
     height: 30px;
     background-color: var(--card);
 }
