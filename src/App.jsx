@@ -23,7 +23,8 @@ export default function App() {
   let navigate = useNavigate();
   const [shopProducts, setShopProducts] = useState(products);
   const [cartContent, setCartContent] = useState([]);
-  const [cartCounter, setCartCounter] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [cartCounter, setCartCounter] = useState((localStorage.getItem("cart") == null ? 0 : JSON.parse(localStorage.getItem("cart")).length));
 
   function getUserData() {
     let data = {
@@ -68,11 +69,11 @@ export default function App() {
   return (
     <>
       {localStorage.getItem("id") == null ? <SignupDiscount /> : <></>}
-      <Navbar logOut={logOut} cartContent = {cartContent} cartCounter = {cartCounter} />
+      <Navbar logOut={logOut} cartContent = {cartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter}/>
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path = "/cart" element = {<ProtectedRoute> <Cart shopProducts={shopProducts} cartContent = {cartContent} setCartContent = {setCartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter}/> </ProtectedRoute>}/>
+        <Route path = "/cart" element = {<ProtectedRoute> <Cart shopProducts={shopProducts} cartContent = {cartContent} setCartContent = {setCartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter} totalPrice = {totalPrice} setTotalPrice = {setTotalPrice}/> </ProtectedRoute>}/>
         <Route
           path="/profile"
           element={
@@ -86,7 +87,7 @@ export default function App() {
 
         <Route
           path="/product/:id"
-          element={<ProductDetails shopProducts={shopProducts} cartContent = {cartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter} />}
+          element={<ProductDetails shopProducts={shopProducts} cartContent = {cartContent} setCartContent = {setCartContent} cartCounter = {cartCounter} setCartCounter = {setCartCounter} totalPrice = {totalPrice} setTotalPrice = {setTotalPrice} />}
         />
 
         <Route path="/login" element={<Login getUserData={getUserData} />} />

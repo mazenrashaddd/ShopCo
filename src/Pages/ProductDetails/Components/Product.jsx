@@ -2,21 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function Product({ shopProducts, cartContent, cartCounter, setCartCounter }) {
-  const [itemCounter, setItemCounter] = useState(1);
+export default function Product({ shopProducts, cartContent, setCartContent, cartCounter, setCartCounter, totalPrice, setTotalPrice}) {
   const productID = useParams();
 
   function addItemToCart(){
-    let cart = [...cartContent];
+    let cart = (localStorage.getItem("cart") == null ? [] : JSON.parse(localStorage.getItem("cart")));
     let data = {
-      id: productID.id,
-      quantity: itemCounter
+      id: productID.id
     }
+    let price = totalPrice + (shopProducts[productID.id].priceInCents) / 100;
 
-    setItemCounter(1);
     setCartCounter(cartCounter + 1)
     cart.push(data);
+    setTotalPrice(totalPrice + (shopProducts[productID.id].priceInCents) / 100)
     localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("price", JSON.stringify(price))
   }
 
   return (
@@ -132,22 +132,7 @@ export default function Product({ shopProducts, cartContent, cartCounter, setCar
                 "
           />
           <hr />
-          <div className=" d-flex justify-content-between ">
-            <div className="updateItemContainer d-flex py-4 px-4 justify-content-between align-items-center rounded-5">
-              <div
-                role="button"
-                onClick={() => setItemCounter(Math.max(1, itemCounter - 1))}
-              >
-                <i className="fa-solid fa-minus fa-sm mx-2"></i>
-              </div>
-              <div>{itemCounter}</div>
-              <div
-                role="button"
-                onClick={() => setItemCounter(itemCounter + 1)}
-              >
-                <i className="fa-solid fa-plus fa-sm mx-2"></i>
-              </div>
-            </div>
+          <div className=" d-flex justify-content-end ">
             <input
               className="btn me-4 rounded-4 bg-black text-white rounded-5 px-5"
               type="button"

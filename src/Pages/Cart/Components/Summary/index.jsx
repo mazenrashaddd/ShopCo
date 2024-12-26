@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./style.css"
 
-export default function Summary({cartContent}) {
+export default function Summary({totalPrice, setTotalPrice}) {
+  setTotalPrice(JSON.parse(localStorage.getItem("price")));
+
+  useEffect(() => {
+    setTotalPrice(JSON.parse(localStorage.getItem("price")))
+  }, [totalPrice])
+
   return (
     <div>
       <div className="cartSummary rounded-4 border p-3 h-100">
         <h5 className='mb-4'>Order Summary</h5>
         <div className="d-flex justify-content-between">
           <p className='fw-normal'>Subtotal</p>
-          <h5 className='text-black'>$</h5>
+          <h5 className='text-black'>${totalPrice}</h5>
         </div>
         <div className="d-flex justify-content-between">
           <p className='fw-normal'>Discount (-0%)</p>
@@ -21,7 +27,7 @@ export default function Summary({cartContent}) {
         <hr className='m-0 mb-3'/>
         <div className="d-flex justify-content-between">
           <p className='fw-normal text-black'>Total</p>
-          <h5 className='text-black fw-black'>$</h5>
+          <h5 className='text-black fw-black'>${totalPrice}</h5>
         </div>
         <div className="promoContainer d-flex justify-content-between align-items-center">
           <div>
