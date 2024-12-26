@@ -50,6 +50,12 @@ export default function Profile({shopProducts, setShopProducts}) {
     navigate("/profile")
   }
 
+  function deleteProduct(i){
+    let data = [...shopProducts]
+    data.splice(i, 1)
+    setShopProducts(data);
+  }
+
   return (
     <div className='profile container my-5'>
       <div className="bg-light p-3 rounded-4">
@@ -73,12 +79,10 @@ export default function Profile({shopProducts, setShopProducts}) {
                     let selected = document.querySelector(".editProfile");
                     let unselected = document.querySelector(".passwordAndSecurity");
                     let unselectedTwo = document.querySelector(".inventory")
-                    let unselectedThree = document.querySelector(".orders")
                     
                     selected.style.display = 'block';
                     unselected.style.display = 'none';
                     unselectedTwo.style.display = 'none';
-                    unselectedThree.style.display = 'none';
                   }}>
                     <div>
                       Edit Profile
@@ -88,12 +92,10 @@ export default function Profile({shopProducts, setShopProducts}) {
                     let selected = document.querySelector(".passwordAndSecurity");
                     let unselected = document.querySelector(".editProfile");
                     let unselectedTwo = document.querySelector(".inventory")
-                    let unselectedThree = document.querySelector(".orders")
                     
                     selected.style.display = 'block';
                     unselected.style.display = 'none';
                     unselectedTwo.style.display = 'none';
-                    unselectedThree.style.display = 'none';
                   }}>
                     <div>
                       Password & Security
@@ -105,14 +107,12 @@ export default function Profile({shopProducts, setShopProducts}) {
                       let selectedTwo = document.querySelector(".showProducts")
                       let unselected = document.querySelector(".editProfile");
                       let unselectedTwo = document.querySelector(".passwordAndSecurity")
-                      let unselectedThree = document.querySelector(".orders")
                       let unselectedFour = document.querySelector(".addProductForm")
                       
                       selected.style.display = 'block';
                       selectedTwo.style.display = 'flex';
                       unselected.style.display = 'none';
                       unselectedTwo.style.display = 'none';
-                      unselectedThree.style.display = 'none';
                       unselectedFour.style.display = 'none';
                     }}>
                       <div>
@@ -122,21 +122,6 @@ export default function Profile({shopProducts, setShopProducts}) {
                     :
                     <></>
                   }
-                  <li className='mb-2 p-2 rounded-2' role = "button" onClick={() => {
-                    let selected = document.querySelector(".orders");
-                    let unselected = document.querySelector(".editProfile");
-                    let unselectedTwo = document.querySelector(".inventory")
-                    let unselectedThree = document.querySelector(".passwordAndSecurity")
-                      
-                    selected.style.display = 'block';
-                    unselected.style.display = 'none';
-                    unselectedTwo.style.display = 'none';
-                    unselectedThree.style.display = 'none';
-                  }}>
-                    <div>
-                      Orders
-                    </div>
-                  </li>
               </ul>
             </div>
           </div>
@@ -214,6 +199,9 @@ export default function Profile({shopProducts, setShopProducts}) {
                       {shopProducts.map((item, i) => {
                         return (
                           <div key = {i} className="col-4">
+                            <div className="trashContainer px-2 py-1 pb-1 rounded-1 text-end" role = "button" onClick={() => {deleteProduct(i)}}>
+                              <i className="trash fa-solid fa-trash-can fa-sm"></i>
+                            </div>
                             <Link to = {`/product/${i}`}>
                               <div className="card rounded-3">
                                 <img src={item.image ? item.image : require('../../Images/image-placeholder.png')} className="card-img-top" alt="..."/>
@@ -259,9 +247,6 @@ export default function Profile({shopProducts, setShopProducts}) {
                       <button type = "submit" className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2"> Add </button>
                     </form>
                   </div>
-                </div>
-                <div className="orders ms-4">
-                  <p className='mb-4'>Orders</p>
                 </div>
             </div>
           </div>
