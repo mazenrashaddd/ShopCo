@@ -239,7 +239,7 @@ export default function Profile({shopProducts, setShopProducts}) {
                         <input id = "image" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "text" name = "image" placeholder='Enter product image link' onChange={getProductData}/>
                         <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
                       </div>
-                      <label htmlFor='stock' className='form-label'>Stock Quantity</label>
+                      <label htmlFor='stock' className='form-label'>Category</label>
                       <div className="position-relative">
                         <input id = "stock" className='inputBox shadow form-control mb-3 rounded-5 ps-4' type = "number" name = "category" placeholder='Enter product category' onChange={getProductData}/>
                         <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
