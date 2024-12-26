@@ -155,7 +155,7 @@ export default function Profile({ shopProducts, setShopProducts }) {
                 <form onSubmit={saveUpdatedUserData}>
                   <div className="row">
                     <div className="col-12 col-lg-6">
-                      <p className="mb-3 mt-4">Personal</p>
+                      <p className="mb-4">Personal</p>
                       <label htmlFor="firstName" className="form-label">
                         First Name
                       </label>
@@ -170,7 +170,7 @@ export default function Profile({ shopProducts, setShopProducts }) {
                           }
                           onChange={getUpdatedUserData}
                         />
-                        <i className="profileInputIcon fa-solid fa-user fa-2xs"></i>
+                        <i className="profileInputIcon fa-solid fa-user fa-2xs me-3 me-sm-2"></i>
                       </div>
                       <label htmlFor="lastName" className="form-label">
                         Last Name
@@ -190,7 +190,7 @@ export default function Profile({ shopProducts, setShopProducts }) {
                       </div>
                     </div>
                     <div className="col-12 col-lg-6">
-                      <p className="mt-4">Contact</p>
+                      <p className="mb-4">Contact</p>
                       <label htmlFor="email" className="form-label">
                         Email
                       </label>
@@ -225,7 +225,86 @@ export default function Profile({ shopProducts, setShopProducts }) {
                       </div>
                     </div>
                   </div>
+                  <button
+                    type="submit"
+                    className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2"
+                  >
+                    {" "}
+                    Save{" "}
+                  </button>
                 </form>
+              </div>
+              <div className="passwordAndSecurity ms-4">
+                <form>
+                  <p className="mb-4">Change Password</p>
+                  <label htmlFor="current" className="form-label">
+                    Current Password
+                  </label>
+                  <div className="position-relative">
+                    <input
+                      id="current"
+                      className="inputBox shadow form-control mb-3 rounded-5 ps-4"
+                      type="password"
+                      placeholder="Enter your current password"
+                    />
+                    <i className="profileInputIcon fa-solid fa-lock fa-2xs"></i>
+                  </div>
+                  <label htmlFor="new" className="form-label">
+                    New Password
+                  </label>
+                  <div className="position-relative">
+                    <input
+                      id="new"
+                      className="inputBox shadow form-control mb-3 rounded-5 ps-4"
+                      type="password"
+                      placeholder="Enter your new password"
+                    />
+                    <i className="profileInputIcon fa-solid fa-lock fa-2xs"></i>
+                  </div>
+                  <label htmlFor="confirmNew" className="form-label">
+                    Confirm Password
+                  </label>
+                  <div className="position-relative">
+                    <input
+                      id="confirmNew"
+                      className="inputBox shadow form-control mb-3 rounded-5 ps-4"
+                      type="password"
+                      placeholder="Confirm your new password"
+                    />
+                    <i className="profileInputIcon fa-solid fa-lock fa-2xs"></i>
+                  </div>
+                  <button
+                    type="submit"
+                    className="profileSaveButton btn btn-light rounded-5 shadow mt-3 mb-2"
+                  >
+                    {" "}
+                    Save{" "}
+                  </button>
+                </form>
+              </div>
+              <div className="inventory ms-4">
+                <div className="d-flex justify-content-between align-items-center">
+                  <p className="mb-4">Inventory</p>
+                  <div className="pb-2">
+                    <button
+                      type="submit"
+                      className="addProduct btn btn-light rounded-5 shadow mb-4"
+                      onClick={() => {
+                        let selected =
+                          document.querySelector(".addProductForm");
+                        let unselected =
+                          document.querySelector(".showProducts");
+
+                        selected.style.display = "block";
+                        unselected.style.display = "none";
+                      }}
+                    >
+                      {" "}
+                      Add Product{" "}
+                    </button>
+                  </div>
+                </div>
+
                 <div className="row showProducts g-2 mt-2">
                   {shopProducts.map((item, i) => {
                     return (
